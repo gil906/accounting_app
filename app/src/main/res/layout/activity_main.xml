@@ -30,4 +30,84 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/netWorth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Net Worth"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp" />
+
+        <!-- Repeat similar structure for other hierarchy levels -->
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+// app/src/main/java/com/example/accountingapp/MainActivity.kt
+package com.example.accountingapp
+
+import android.os.Bundle
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val netWorth = Account(
+            name = "Net Worth",
+            amount = 0.0,
+            subAccounts = listOf(
+                Account(
+                    name = "Income",
+                    amount = 0.0,
+                    subAccounts = listOf(
+                        Account(name = "User 1", amount = 1000.0),
+                        Account(name = "User 2", amount = 2000.0)
+                    )
+                )
+                // Add other accounts similarly
+            )
+        )
+
+        val totalNetWorth = calculateTotal(netWorth)
+        val netWorthTextView = findViewById<TextView>(R.id.netWorth)
+        netWorthTextView.text = "Net Worth: $totalNetWorth"
+
+        val layout = findViewById<LinearLayout>(R.id.layout)
+        addAccountViews(layout, netWorth.subAccounts, 1)
+    }
+
+    private fun calculateTotal(account: Account): Double {
+        return account.amount + account.subAccounts.sumOf { calculateTotal(it) }
+    }
+
+    private fun addAccountViews(layout: LinearLayout, accounts: List<Account>, level: Int) {
+        for (account in accounts) {
+            val textView = TextView(this)
+            textView.text = "${" ".repeat(level * 4)}${account.name}: ${account.amount}"
+            layout.addView(textView)
+            addAccountViews(layout, account.subAccounts, level + 1)
+        }
+    }
+}
