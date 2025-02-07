@@ -1,0 +1,59 @@
+                           Net Worth
+                              |
+                            Income
+                              |
+               +--------------+--------------+
+               |                             |
+             User 1                        User 2
+               |                             |
+             $XXXX                          $XXXX
+               |                             |
+       +-------+-------+             +-------+-------+
+       |               |             |               |
+     Bank 1          Bank 2        Stocks          Stocks
+       |               |             |               |
+      $XXX           $XXXX          $XXX           $XXXX
+       |               |             |               |
+       +-------+-------+             +-------+-------+
+               |                             |
+          Total Banks                   Total Stocks
+             $XXXX                          $XXXX
+               |                             |
+               +---------------+-------------+
+                               |
+                        Total Banks + Stocks
+                               $XXXX
+                               |
+               +---------------+---------------+
+               |                               |
+             User 1                          User 2
+               |                               |
+             401K                            401K
+               |                               |
+       +-------+-------+               +-------+-------+
+       |               |               |               |
+      Roth          Non-Roth          Roth          Non-Roth
+       |               |               |               |
+      $XXXX           $XXXX           $XXXX           $XXXX
+               |                               |
+               +---------------+---------------+
+                               |
+                        Total on 401K
+                             $XXXX
+                               |
+               +---------------+---------------+
+                               |
+                  Total Banks + Stocks + 401K
+                             $XXXX
+                               |
+               +---------------+---------------+
+               |                               |
+              Cash                           Assets
+               |                               |
+             $XXXX                           $XXXX
+               |                               |
+               +---------------+---------------+
+                               |
+                  Total Banks + Stocks + 401K +
+                             Cash + Assets
+                             $XXXX
