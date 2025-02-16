@@ -27,7 +27,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome // Ensure textHome is correctly referenced
+        // Ensure textHome is correctly referenced
+        val textView: TextView = binding.textHome // Ensure textHome is defined in FragmentHomeBinding
 
         homeViewModel.text.observe(viewLifecycleOwner) { text ->
             textView.text = text
